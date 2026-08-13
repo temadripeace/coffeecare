@@ -1,54 +1,17 @@
-# Core Scientific Computing
+streamlit
+tqdm
+xlrd
+fiona
 numpy
 pandas
-scipy
-
-# Data Visualization
-matplotlib
-seaborn
-plotly
-
-# Machine Learning
-scikit-learn
-joblib
-
-# Deep Learning (PyTorch)
-torch
-torchvision
-torchaudio
-torchinfo
-torchmetrics
-
-# Image Processing
-opencv-python
-Pillow
-albumentations
-imageio
-
-# Model Utilities
-tqdm
-tensorboard
-
-# Web Application
-streamlit
-gradio
-django
-
-# Geospatial Librariesclear
-rasterio
-geopandas
-shapely
-fiona
 pyproj
-
-# Utilities
-python-dotenv
-
-# Excel Support
+shapely
 openpyxl
-xlrd
-
-# Jupyter (Optional)
-jupyter
-ipykernel
-notebook
+geopandas
+matplotlib
+torch
+Pillow
+joblib
+torchvision
+torchmetrics
+scikit-learn
