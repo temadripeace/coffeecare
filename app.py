@@ -20,18 +20,6 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class_names = ["Health", "Leaf Rust", "Phoma"]
 
 model_metrics = {
-    "CNN": {
-        "Accuracy": 0.7709,
-        "Precision": 0.7902,
-        "Recall": 0.7666,
-        "F1 Score": 0.7572
-    },
-    "ResNet18": {
-        "Accuracy": 0.9903,
-        "Precision": 0.9908,
-        "Recall": 0.9899,
-        "F1 Score": 0.9902
-    },
     "EfficientNet": {
         "Accuracy": 0.9942,
         "Precision": 0.9941,
@@ -59,41 +47,7 @@ transform = transforms.Compose([
 
 @st.cache_resource
 def load_model(model_name):
-
-    if model_name == "CNN":
-
-        class NeuralNetwork(nn.Module):
-            def __init__(self):
-                super().__init__()
-                self.flatten = nn.Flatten()
-                self.linear_relu_stack = nn.Sequential(
-                    nn.Linear(224 * 224 * 3, 512),
-                    nn.ReLU(),
-                    nn.Linear(512, 256),
-                    nn.ReLU(),
-                    nn.Linear(256, 128),
-                    nn.ReLU(),
-                    nn.Linear(128, len(class_names))
-                )
-
-            def forward(self, x):
-                x = self.flatten(x)
-                logits = self.linear_relu_stack(x)
-                return logits
-
-        model = NeuralNetwork()
-        model_path = "models/best_CNN.pth"
-
-    elif model_name == "ResNet18":
-
-        model = models.resnet18(weights=None)
-        model.fc = nn.Linear(
-            model.fc.in_features,
-            len(class_names)
-        )
-        model_path = "models/best_ResNet18.pth"
-
-    elif model_name == "EfficientNet":
+    if model_name == "EfficientNet":
 
         model = models.efficientnet_b0(weights=None)
         model.classifier[1] = nn.Linear(
@@ -143,10 +97,7 @@ model_name = st.sidebar.selectbox(
     "Select Model",
     [
         "MobileNet",
-        "EfficientNet",
-        "ResNet18",
-        "CNN"
-        
+        "EfficientNet",        
     ]
 )
 
