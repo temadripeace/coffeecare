@@ -1,7 +1,4 @@
 streamlit
-tqdm
-xlrd
-fiona
 numpy
 pandas
 pyproj
